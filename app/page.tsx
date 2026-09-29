@@ -92,14 +92,14 @@ function PlaceToken({ kind, anchored = false }: { kind: PlaceKind; anchored?: bo
 function CurrentPersona({ compact = false }: { compact?: boolean }) {
   return <span className={compact ? "current-persona persona-compact" : "current-persona"} aria-label="Halo’s current standing stickman avatar">
     <span className="persona-ground" />
-    <span className="persona-art">
-      <img src="/halo/persona-standing.png" alt="" />
-      <svg className="persona-face" viewBox="0 0 512 512" aria-hidden="true">
+    <svg className="persona-figure" viewBox="166 190 180 220" aria-hidden="true">
+      <image href="/halo/persona-standing.png" x="0" y="0" width="512" height="512" />
+      <g className="persona-face">
         <circle cx="244.1" cy="269.75" r="6.04" />
-        <circle cx="268.25" cy="269.75" r="5.19" />
+        <circle cx="268.25" cy="269.75" r="6.04" />
         <path d="M249.88 289.31 Q257.23 296.2 264.57 289.31" />
-      </svg>
-    </span>
+      </g>
+    </svg>
   </span>;
 }
 

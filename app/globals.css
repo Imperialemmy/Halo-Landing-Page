@@ -2073,28 +2073,18 @@ img.avatar { object-fit: cover; }
 .current-persona {
   position: relative;
   display: inline-block;
-  width: 92px;
-  height: 92px;
-  flex: 0 0 92px;
+  width: 52px;
+  height: 64px;
+  flex: 0 0 52px;
 }
 
-.persona-art,
-.persona-art img,
-.persona-face {
+.persona-figure {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.persona-art img,
-.persona-face {
-  transform: scale(2.25);
-}
-
-.persona-art img {
-  object-fit: contain;
-  filter: drop-shadow(0 4px 5px rgb(0 0 0 / 30%));
+  overflow: visible;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 24%));
 }
 
 .persona-face circle {
@@ -2112,25 +2102,25 @@ img.avatar { object-fit: cover; }
   position: absolute;
   z-index: -1;
   right: 50%;
-  bottom: 19px;
-  width: 36px;
-  height: 10px;
-  border: 3px solid var(--green);
+  bottom: 2px;
+  width: 30px;
+  height: 8px;
+  border: 2px solid var(--green);
   border-radius: 50%;
   background: rgb(0 0 0 / 14%);
   transform: translateX(50%);
 }
 
 .persona-compact {
-  width: 68px;
-  height: 68px;
-  flex-basis: 68px;
+  width: 44px;
+  height: 54px;
+  flex-basis: 44px;
 }
 
 .persona-compact .persona-ground {
-  bottom: 14px;
-  width: 29px;
-  height: 8px;
+  bottom: 1px;
+  width: 25px;
+  height: 7px;
   border-width: 2px;
 }
 
