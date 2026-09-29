@@ -16,7 +16,9 @@ npm run dev
 npm run build
 ```
 
-The production build is exported as a static site in `out/`.
+The project deploys as a standard Next.js application on Vercel. Vercel sets
+the production URL automatically. Set `NEXT_PUBLIC_SITE_URL` to a custom domain
+when one is connected so canonical and social-preview links use that domain.
 
 ## Useful Commands
 

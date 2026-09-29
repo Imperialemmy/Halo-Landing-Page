@@ -2,7 +2,16 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const metadataBase = new URL("https://halo-safety-ng.mchinyangwa.chatgpt.site");
+  const configuredUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ??
+    process.env.VERCEL_URL;
+  const siteUrl = configuredUrl
+    ? configuredUrl.startsWith("http")
+      ? configuredUrl
+      : `https://${configuredUrl}`
+    : "http://localhost:3000";
+  const metadataBase = new URL(siteUrl);
   const socialImage = new URL("/og.png", metadataBase).toString();
 
   return {
