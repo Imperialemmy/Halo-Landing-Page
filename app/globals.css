@@ -54,6 +54,19 @@
 .privacy-copy p.privacy-caveat { font-size: 14px; border-left: 2px solid #e5a93c; padding-left: 16px; }
 .feature-grid .feature-card > p { font-size: 16px; }
 .feature-grid .feature-topline { font-size: 12px; }
+.feature-grid .feature-card { display: flex; flex-direction: column; gap: 0; }
+.feature-grid .feature-card > p { margin-bottom: 28px; }
+.feature-grid .shortcut-visual, .feature-grid .checkpoint-visual,
+.feature-grid .history-visual, .feature-grid .privacy-visual,
+.feature-grid .places-visual, .feature-grid .feature-sos-orb {
+  position: relative; inset: auto; flex-shrink: 0; margin-top: auto;
+}
+.feature-grid .feature-sos-orb { width: 150px; height: 150px; margin: auto 16px 12px auto; }
+.feature-grid .checkpoint-visual { margin: auto 12px 12px; }
+.feature-grid .real-places { gap: 7px; }
+.feature-grid .real-places span { padding: 7px 10px; display: flex; font-size: 14px; }
+.feature-grid .real-places span::before { display: none; }
+.feature-grid .real-places img { width: 40px; height: 40px; }
 @media (max-width: 1180px) { .hero .launch-actions { align-items: center; } }
 @media (max-width: 760px) {
   .checkin-story { grid-template-columns: 1fr; gap: 24px; padding-block: 40px; }
