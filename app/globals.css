@@ -1,5 +1,68 @@
 @import "tailwindcss";
 
+/* Current Halo experience: real app artwork, a quiet map, and explicit check-ins. */
+.launch-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 32px; }
+.launch-actions .primary-button { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 30px; }
+.launch-actions > span { color: #aeb8c8; font-size: 14px; }
+.launch-actions-compact { min-width: 270px; }
+.guardian-stage .phone-screen { background: #111b2c; padding-inline: 15px; }
+.guardian-stage .phone-topline { margin-top: 13px; font-size: 11px; color: #c7d3e5; }
+.phone-map { position: relative; height: 280px; margin-inline: -15px; overflow: hidden; background: #192940; }
+.preview-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-road { fill: none; stroke: #3b526d; stroke-width: 13; }
+.map-trail { fill: none; stroke: #77aaff; stroke-width: 4; stroke-dasharray: 3 9; stroke-linecap: round; }
+.preview-map circle { fill: #83b4ff; stroke: #edf4ff; stroke-width: 2; }
+.map-place-name { position: absolute; top: 20px; left: 20px; font-size: 12px; color: #a4b6ce; }
+.map-home { position: absolute; top: 45px; left: 29px; }
+.map-person { position: absolute; left: 105px; top: 80px; display: flex; flex-direction: column; align-items: center; }
+.map-person img { object-fit: contain; filter: drop-shadow(0 5px 8px #030910); }
+.map-person strong { font-size: 13px; padding: 5px 10px; border-radius: 12px; background: #0b1220; }
+.map-person small { padding-top: 4px; font-size: 12px; color: #f0c778; }
+.map-sos { position: absolute; bottom: 17px; right: 15px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #ff3457; color: #fff; font-size: 13px; font-weight: 700; }
+.phone-checkin { display: flex; justify-content: space-between; align-items: center; gap: 5px; padding: 13px 8px; margin: 12px -5px; border: 1px solid #315949; border-radius: 17px; background: #101d24; }
+.phone-checkin strong, .phone-checkin small { display: block; }
+.phone-checkin small { font-size: 10px; color: #aabac5; }
+.phone-checkin b { font-size: 11px; color: #58d698; }
+.phone-checkin em { padding: 9px 8px; background: #46d08a; color: #071c13; border-radius: 20px; font-style: normal; font-size: 12px; font-weight: 700; }
+.phone-bottom > strong { font-size: 13px; }
+.phone-bottom > div { display: flex; justify-content: space-around; margin-top: 5px; }
+.phone-bottom > div span { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #b9c5d6; }
+.phone-bottom > small { display: block; margin-top: 10px; font-size: 9px; text-align: center; color: #8294ac; }
+.real-places span { display: flex; align-items: center; gap: 5px; }
+.real-places img { object-fit: contain; }
+.checkin-feature { display: flex; align-items: center; gap: 16px; margin-top: 28px; padding: 16px; border: 1px solid #315949; border-radius: 18px; }
+.checkin-feature strong { font-size: 25px; font-variant-numeric: tabular-nums; }
+.checkin-feature small { display: block; font-size: 12px; font-weight: 400; color: #aeb8c8; }
+.checkin-feature > span { color: #66dfa6; font-size: 14px; }
+.checkin-feature > b { margin-left: auto; background: #46d08a; color: #061c12; border-radius: 22px; padding: 10px 15px; font-size: 14px; }
+.guide-visual { display: flex; gap: 20px; align-items: center; margin-top: 35px; }
+.guide-visual > span { color: #69a1ff; font-size: 52px; line-height: 1; }
+.guide-visual small { display: block; margin-top: 5px; color: #aeb8c8; font-size: 14px; }
+.checkin-story { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; padding: 56px 0; border-block: 1px solid #263142; }
+.checkin-story h2 { font-family: var(--display); font-size: clamp(36px, 4vw, 62px); letter-spacing: -.055em; line-height: 1.07; margin: 20px 0; }
+.checkin-story p { color: #aeb8c8; line-height: 1.65; font-size: 18px; max-width: 550px; }
+.checkin-story p.checkin-detail { font-size: 14px; }
+.checkin-demo { padding: 38px; border-radius: 28px; border: 1px solid #345847; background: linear-gradient(150deg, #182b26, #141b25 70%); }
+.demo-caption { font-size: 12px; letter-spacing: .12em; color: #7bdbac; }
+.demo-time { font-family: var(--display); font-size: clamp(35px, 4vw, 62px); font-variant-numeric: tabular-nums; letter-spacing: -.05em; margin-top: 35px; }
+.checkin-demo p { font-size: 16px; }
+.demo-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.demo-actions button { min-height: 48px; padding: 10px 22px; border: 1px solid #4b7966; background: transparent; color: #b6ebd0; border-radius: 24px; cursor: pointer; }
+.demo-actions .confirm-safe { color: #061c12; background: #46d08a; border-color: #46d08a; font-weight: 700; }
+.demo-actions button:hover { filter: brightness(1.15); }
+.checkin-demo > small { display: block; font-size: 12px; line-height: 1.5; color: #a3b4bf; margin-top: 25px; }
+.privacy-copy p.privacy-caveat { font-size: 14px; border-left: 2px solid #e5a93c; padding-left: 16px; }
+.feature-grid .feature-card > p { font-size: 16px; }
+.feature-grid .feature-topline { font-size: 12px; }
+@media (max-width: 1180px) { .hero .launch-actions { align-items: center; } }
+@media (max-width: 760px) {
+  .checkin-story { grid-template-columns: 1fr; gap: 24px; padding-block: 40px; }
+  .checkin-demo { padding: 26px; }
+  .launch-actions > span { font-size: 13px; }
+  .checkin-feature { gap: 9px; padding: 12px; }
+  .real-places { flex-wrap: wrap; }
+}
+
 @font-face {
   font-family: "Schibsted Grotesk";
   src: url("/fonts/SchibstedGrotesk-Medium.ttf") format("truetype");

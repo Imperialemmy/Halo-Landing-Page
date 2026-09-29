@@ -1,18 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const metadataBase = new URL(`${protocol}://${host}`);
+  const metadataBase = new URL("https://halo-safety-ng.mchinyangwa.chatgpt.site");
   const socialImage = new URL("/og.png", metadataBase).toString();
 
   return {
-    title: "Halo — Someone’s always looking out for you",
+    title: "Halo — Your people. Your places. Your Halo.",
     description:
-      "Halo is a personal safety app for trusted circles, with SOS alerts, checkpoints, live trip sharing, privacy controls, and location history.",
+      "Keep your circle close with Halo for iPhone: live location sharing, personal privacy controls, check-ins, SOS, saved places, and 30-day trail replay.",
     applicationName: "Halo",
     metadataBase,
     keywords: [
@@ -24,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "trusted contacts",
     ],
     openGraph: {
-      title: "Halo — Someone’s always looking out for you",
+      title: "Halo — Your people. Your places. Your Halo.",
       description:
         "A calmer, more private way to keep the people you love close through every journey.",
       type: "website",
@@ -41,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Halo — Someone’s always looking out for you",
+      title: "Halo — Your people. Your places. Your Halo.",
       description:
         "A calmer, more private way to keep the people you love close through every journey.",
       images: [socialImage],

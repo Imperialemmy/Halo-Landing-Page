@@ -1,72 +1,72 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 const featureCards = [
   {
-    id: "F-1",
-    className: "feature-card shortcut-card",
-    label: "Quiet shortcuts",
-    title: "Help, without opening the app.",
-    copy: "Set up Back Tap, the Action button, or a lock-screen widget so your safety shortcut stays close.",
-    visual: "shortcut",
+    "id": "F-1",
+    "className": "feature-card shortcut-card",
+    "label": "Safety shortcuts",
+    "title": "Close by. Even when Halo isn’t open.",
+    "copy": "Use the Action button or a lock-screen widget to reach SOS. Live Activities keep an active check-in visible.",
+    "visual": "shortcut"
   },
   {
-    id: "F-2",
-    className: "feature-card checkpoint-card",
-    label: "Checkpoints",
-    title: "Every stop tells your circle you’re moving safely.",
-    copy: "Add important points to a route. Halo records arrivals, departures, delays, and the time spent at each stop.",
-    visual: "checkpoint",
+    "id": "F-2",
+    "className": "feature-card checkpoint-card",
+    "label": "Journeys & checkpoints",
+    "title": "A little reassurance at every stop.",
+    "copy": "Plan a journey with checkpoints so your circle can follow progress and receive updates about reached or missed stops.",
+    "visual": "checkpoint"
   },
   {
-    id: "F-3",
-    className: "feature-card sos-feature-card",
-    label: "SOS",
-    title: "One deliberate hold. The right people know.",
-    copy: "Start a distress alert, share your live and last-known location, and keep the event active until you mark yourself safe.",
-    visual: "sos",
+    "id": "F-3",
+    "className": "feature-card sos-feature-card",
+    "label": "SOS",
+    "title": "A clear way to ask your circle for help.",
+    "copy": "Start an SOS to alert your trusted circle and share your emergency location. Mark yourself safe to close the alert.",
+    "visual": "sos"
   },
   {
-    id: "F-4",
-    className: "feature-card history-card",
-    label: "Last location",
-    title: "A clear trail when plans change.",
-    copy: "See where someone was last seen, when they arrived, when they left, and how long they stayed.",
-    visual: "history",
+    "id": "F-4",
+    "className": "feature-card history-card",
+    "label": "30-day trail replay",
+    "title": "Your day, retraced.",
+    "copy": "Replay your own recent journeys with a moving avatar, stops, and movement types. See which stretches were recorded live or in the background.",
+    "visual": "history"
   },
   {
-    id: "F-5",
-    className: "feature-card privacy-card",
-    label: "Privacy levels",
-    title: "Different relationships. Different access.",
-    copy: "Choose Limited, Trusted, or Emergency Access for every person in your circle—and change it any time.",
-    visual: "privacy",
+    "id": "F-5",
+    "className": "feature-card privacy-card",
+    "label": "People & privacy",
+    "title": "Close doesn’t have to mean always visible.",
+    "copy": "Organize your circle into Friends, Family, and Loves. Combine contact permissions with privacy rules for saved places.",
+    "visual": "privacy"
   },
   {
-    id: "F-6",
-    className: "feature-card tracking-card",
-    label: "Live tracking",
-    title: "Follow the journey, not their every move.",
-    copy: "Share a live route with approved contacts, show when it last updated, and pause or stop sharing whenever you choose.",
-    visual: "tracking",
+    "id": "F-6",
+    "className": "feature-card tracking-card",
+    "label": "Check-ins",
+    "title": "Getting there isn’t the same as being okay.",
+    "copy": "Set a timer and an optional destination. Arrival reminds you to confirm “I’m safe.” Running late? Add 15 minutes.",
+    "visual": "checkin"
   },
   {
-    id: "F-7",
-    className: "feature-card places-card",
-    label: "Saved places",
-    title: "Your everyday destinations, ready when you need them.",
-    copy: "Save home, work, school, church, or any important place for faster check-ins and route setup.",
-    visual: "places",
+    "id": "F-7",
+    "className": "feature-card places-card",
+    "label": "Saved places & stays",
+    "title": "The familiar places in your day.",
+    "copy": "Save home, work, and your favorite spots. See arrivals and time spent there, with a separate sharing preference for each place.",
+    "visual": "places"
   },
   {
-    id: "F-8",
-    className: "feature-card recovery-card",
-    label: "Secure recovery",
-    title: "Get back in without giving anything away.",
-    copy: "Reset access through a time-limited email link, with privacy-safe confirmation and protection against repeated requests.",
-    visual: "recovery",
-  },
+    "id": "F-8",
+    "className": "feature-card recovery-card",
+    "label": "First-aid guides",
+    "title": "Useful guidance, close at hand.",
+    "copy": "Browse first-aid articles with offline-friendly access. Practical information to support your next step—not a replacement for professional help.",
+    "visual": "guide"
+  }
 ] as const;
 
 function BrandMark({ small = false }: { small?: boolean }) {
@@ -74,49 +74,15 @@ function BrandMark({ small = false }: { small?: boolean }) {
 }
 
 function EarlyAccessForm({ compact = false }: { compact?: boolean }) {
-  const [email, setEmail] = useState("");
-  const [joined, setJoined] = useState(false);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!email.trim()) return;
-    setJoined(true);
-  }
-
-  return (
-    <form className={compact ? "early-form early-form-compact" : "early-form"} onSubmit={handleSubmit}>
-      {joined ? (
-        <div className="form-success" role="status">
-          <span className="success-dot" />
-          You’re on the early access list.
-        </div>
-      ) : (
-        <>
-          <label className="sr-only" htmlFor={compact ? "footer-email" : "hero-email"}>
-            Email address
-          </label>
-          <input
-            id={compact ? "footer-email" : "hero-email"}
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-            autoComplete="email"
-          />
-          <button className="primary-button" type="submit">
-            Join early access
-            <span aria-hidden="true">↗</span>
-          </button>
-        </>
-      )}
-    </form>
-  );
+  return <div className={compact ? "launch-actions launch-actions-compact" : "launch-actions"}>
+    <a className="primary-button" href="#features">Explore Halo</a>
+    <span>Coming to iPhone · Early access isn’t open yet</span>
+  </div>;
 }
 
 function GuardianStage() {
   return (
-    <div className="guardian-stage" aria-label="Halo app showing a press-and-hold SOS screen, a trusted circle, a checkpoint trip, and privacy controls">
+    <div className="guardian-stage" aria-label="Illustrative Halo preview showing a saved home, a stickman avatar, a check-in, and your circle">
       <div className="stage-glow" />
       <div className="shield shield-one" />
       <div className="shield shield-two" />
@@ -125,26 +91,20 @@ function GuardianStage() {
         <div className="phone-shell">
           <div className="phone-screen">
             <div className="dynamic-island" />
-            <div className="phone-topline">
-              <span>11:48 PM</span>
-              <span className="signal-bars" aria-hidden="true"><i /><i /><i /></span>
+            <div className="phone-topline"><span>9:41</span><span>HALO · PREVIEW</span></div>
+            <div className="phone-map">
+              <svg className="preview-map" viewBox="0 0 250 290" aria-hidden="true">
+                <path className="map-road" d="M-20 65 L280 5 M-10 170 L275 110 M35 -20 L92 310 M162 -20 L218 310 M-10 275 L265 217" />
+                <path className="map-trail" d="M54 226 L123 211 L110 144 L180 129" />
+                <circle cx="54" cy="226" r="5" /><circle cx="117" cy="178" r="5" />
+              </svg>
+              <span className="map-place-name">Your neighborhood</span>
+              <div className="map-home"><img src="/halo/home.png" alt="" width="54" height="54" /></div>
+              <div className="map-person"><img src="/halo/at-home.png" alt="Halo’s at-home stickman avatar" width="88" height="88" /><strong>You at Home</strong><small>Location hidden</small></div>
+              <span className="map-sos">SOS</span>
             </div>
-            <div className="phone-message">
-              <span>Emergency help</span>
-              <strong>We’re right here.</strong>
-            </div>
-            <div className="hero-sos">
-              <div>
-                <strong>SOS</strong>
-                <span>Press &amp; hold</span>
-              </div>
-            </div>
-            <div className="hold-progress"><span /></div>
-            <p className="hold-label">Release to cancel</p>
-            <div className="phone-status">
-              <span className="safe-dot" />
-              Your trusted circle can see your live location
-            </div>
+            <div className="phone-checkin"><span><strong>23:58</strong><small>until check-in</small></span><b>+15 min</b><em>I’m safe</em></div>
+            <div className="phone-bottom"><strong>Your places</strong><div><span><img src="/halo/home.png" alt="" width="42" height="42" />Home</span><span><img src="/halo/work.png" alt="" width="42" height="42" />Work</span><span><img src="/halo/cafe.png" alt="" width="42" height="42" />Café</span></div><small>Illustrative preview · not live location data</small></div>
           </div>
         </div>
       </div>
@@ -152,22 +112,22 @@ function GuardianStage() {
       <div className="orbit-card mum-card">
         <div className="person-row">
           <span className="avatar avatar-mum">MO</span>
-          <span><strong>Mum</strong><small>Watching your trip</small></span>
+          <span><strong>Mum</strong><small>Family · exact location</small></span>
           <span className="safe-dot push-right" />
         </div>
       </div>
 
       <div className="orbit-card trip-card">
-        <div className="orbit-heading"><span>Checkpoint trip</span><strong>On time</strong></div>
+        <div className="orbit-heading"><span>Checkpoint trip</span><strong>In progress</strong></div>
         <div className="mini-route">
           <div className="route-rail"><i /><i /></div>
           <div><strong>Victoria Island</strong><small>Left 18 mins ago</small></div>
-          <div><strong>Yaba</strong><small>12 mins away</small></div>
+          <div><strong>Yaba</strong><small>Next checkpoint</small></div>
         </div>
       </div>
 
       <div className="orbit-card circle-card">
-        <div className="orbit-heading"><span>Trusted circle</span><b>Everyone’s safe</b></div>
+        <div className="orbit-heading"><span>Trusted circle</span><b>Your people</b></div>
         <div className="circle-row">
           <div className="avatar-stack">
             <span className="avatar avatar-mum">MO</span>
@@ -175,7 +135,7 @@ function GuardianStage() {
             <span className="avatar avatar-kemi">KO</span>
             <span className="avatar avatar-more">+2</span>
           </div>
-          <span className="circle-state"><strong>5 online</strong><small>just now</small></span>
+          <span className="circle-state"><strong>5 in your circle</strong><small>You choose access</small></span>
         </div>
       </div>
 
@@ -190,7 +150,7 @@ function GuardianStage() {
 
 function FeatureVisual({ type }: { type: typeof featureCards[number]["visual"] }) {
   if (type === "shortcut") {
-    return <div className="shortcut-visual"><span>Back Tap</span><span>Action</span><span>Lock screen</span></div>;
+    return <div className="shortcut-visual"><span>Action button</span><span>Lock screen</span><span>Live Activity</span></div>;
   }
   if (type === "checkpoint") {
     return <div className="checkpoint-visual"><i /><span className="checkpoint-line" /><i /><span className="checkpoint-line" /><i /></div>;
@@ -199,18 +159,27 @@ function FeatureVisual({ type }: { type: typeof featureCards[number]["visual"] }
     return <div className="feature-sos-orb">SOS</div>;
   }
   if (type === "history") {
-    return <div className="history-visual"><span className="history-pin" /><div><strong>Last seen at</strong><b>Lekki Phase 1</b><small>8:42 PM · 36 mins</small></div></div>;
+    return <div className="history-visual"><img src="/halo/walking.png" alt="" width="70" height="70" /><div><strong>Your trail</strong><b>Walk. Stop. Replay.</b><small>Explore the last 30 days</small></div></div>;
   }
   if (type === "privacy") {
-    return <div className="privacy-visual"><span><b>Trusted</b><i /></span><span><b>Friends</b><i /></span><span><b>Emergency</b><i /></span></div>;
+    return <div className="privacy-visual"><span><b>Family</b><i /></span><span><b>Friends</b><i /></span><span><b>Loves</b><i /></span></div>;
   }
-  if (type === "tracking") {
-    return <div className="tracking-visual"><span className="tracking-path" /><i className="tracking-start" /><i className="tracking-end" /><b>Live · updated now</b></div>;
+  if (type === "checkin") {
+    return <div className="checkin-feature"><strong>23:58<small>until check-in</small></strong><span>+15 min</span><b>I’m safe</b></div>;
   }
   if (type === "places") {
-    return <div className="places-visual"><span>Home</span><span>School</span><span>Office</span><span>+ Custom</span></div>;
+    return <div className="places-visual real-places">{[["home", "Home"], ["work", "Work"], ["cafe", "Café"]].map(([icon, label]) => <span key={icon}><img src={`/halo/${icon}.png`} alt="" width="54" height="54" />{label}</span>)}</div>;
   }
-  return <div className="recovery-visual"><span>••••••••••••</span><i>Secure link · 30 min</i></div>;
+  return <div className="guide-visual"><span aria-hidden="true">+</span><div><strong>First aid</strong><small>Clear steps, when you need them</small></div></div>;
+}
+
+function CheckInPreview() {
+  const [minutes, setMinutes] = useState(24);
+  const [safe, setSafe] = useState(false);
+  return <section className="checkin-story page-width" aria-labelledby="checkin-title">
+    <div><p className="kicker">Check in, on your terms</p><h2 id="checkin-title">A reminder.<br />Not an assumption.</h2><p>Choose a timer and, if you like, a destination. Halo can remind you when you arrive, but only you can confirm you’re okay.</p><p className="checkin-detail">If you don’t respond, the check-in can escalate to SOS after a two-minute grace period. If iOS has closed Halo, escalation waits until the app runs again.</p></div>
+    <div className="checkin-demo"><span className="demo-caption">TRY A CHECK-IN · DEMO ONLY</span><div className="demo-time" role="status">{safe ? "All checked in." : `${minutes}:00`}</div><p>{safe ? "You confirmed you’re safe." : "Time remaining to confirm you’re safe"}</p><div className="demo-actions">{safe ? <button onClick={() => { setSafe(false); setMinutes(24); }}>Try again</button> : <><button onClick={() => setMinutes(m => m + 15)}>Add 15 minutes</button><button className="confirm-safe" onClick={() => setSafe(true)}>I’m safe</button></>}</div><small>No contacts are notified. This is an interactive illustration.</small></div>
+  </section>;
 }
 
 export default function Home() {
@@ -225,28 +194,28 @@ export default function Home() {
           <a href="#how-it-works">How it works</a>
           <a href="#features">Features</a>
           <a href="#privacy">Privacy</a>
-          <a className="nav-cta" href="#early-access">Get early access</a>
+          <a className="nav-cta" href="#early-access">Discover Halo</a>
         </nav>
       </header>
 
       <main>
         <section className="hero page-width">
           <div className="hero-copy">
-            <p className="eyebrow"><span />Built for moving through Nigeria</p>
-            <h1>Someone’s always <em>looking out</em> for you.</h1>
+            <p className="eyebrow"><span />Your people. Your places. Your Halo.</p>
+            <h1>Keep your people <em>close.</em><br />Your location, yours.</h1>
             <p className="hero-lede">
-              Halo keeps parents, close friends, and late-night commuters quietly connected—from the moment you set out until you’re safely home.
+              A familiar face on the map. A check-in on the way home. A clear signal when you need help. Halo connects your circle—with you in control of what they see.
             </p>
             <div id="early-access">
               <EarlyAccessForm />
             </div>
-            <p className="form-note">Launching first in Nigeria · No noise, no spam.</p>
+            <p className="form-note">Built for everyday connection. Ready for the moments that matter.</p>
           </div>
           <GuardianStage />
         </section>
 
         <div className="trust-strip page-width" aria-label="Halo principles">
-          <strong>Quiet reassurance</strong><i /><span>Private by default</span><i /><span>Designed for real journeys</span>
+          <strong>Quiet reassurance</strong><i /><span>Sharing on your terms</span><i /><span>Designed for real journeys</span>
         </div>
 
         <section id="how-it-works" className="journey-section page-width section-pad">
@@ -276,10 +245,12 @@ export default function Home() {
               <span className="step-index">When you arrive</span>
               <div className="step-icon arrive-icon">✓</div>
               <h3>Close the loop.</h3>
-              <p>Your circle sees that you arrived safely without another “I’m home” call.</p>
+              <p>Arriving prompts a reminder. You tap “I’m safe” to confirm—not just because your phone reached a place.</p>
             </article>
           </div>
         </section>
+
+        <CheckInPreview />
 
         <section id="features" className="features-section page-width section-pad">
           <div className="section-heading feature-heading">
@@ -303,12 +274,13 @@ export default function Home() {
           <div className="privacy-copy">
             <p className="kicker">Your location is personal</p>
             <h2>Share enough to feel safe. Never more than you choose.</h2>
-            <p>Halo makes access visible and adjustable. Give one person precise trip access, show another only a checkpoint, and stop sharing whenever you want.</p>
+            <p>Choose what each person can see, then set boundaries around your saved places. For everyday sharing, the more restrictive setting wins.</p>
             <ul>
-              <li><span>01</span><div><strong>Limited</strong><p>Checkpoints and safe-arrival updates only.</p></div></li>
-              <li><span>02</span><div><strong>Trusted</strong><p>Live trip status and the level of location detail you approve.</p></div></li>
-              <li><span>03</span><div><strong>Emergency access</strong><p>Expanded safety information while an SOS is active.</p></div></li>
+              <li><span>01</span><div><strong>Friends</strong><p>Approximate location at most, with emergency alerts.</p></div></li>
+              <li><span>02</span><div><strong>Family</strong><p>Exact location and check-in status, subject to your place privacy.</p></div></li>
+              <li><span>03</span><div><strong>Loves</strong><p>Access to tier-protected places. Your saved-place privacy still applies.</p></div></li>
             </ul>
+            <p className="privacy-caveat">SOS is different: your emergency location is shared with your circle, even when everyday sharing is restricted.</p>
           </div>
           <div className="privacy-demo" aria-label="Preview of Halo privacy controls">
             <div className="privacy-orbit orbit-back" />
@@ -316,9 +288,9 @@ export default function Home() {
             <div className="privacy-panel">
               <div className="privacy-panel-head"><span>Sharing with</span><b>3 people</b></div>
               <div className="sharing-person"><span className="avatar avatar-mum">MO</span><div><strong>Mum</strong><small>Precise location</small></div><i className="access-level level-full" /></div>
-              <div className="sharing-person"><span className="avatar avatar-tomi">TA</span><div><strong>Tobi</strong><small>Checkpoints only</small></div><i className="access-level level-medium" /></div>
-              <div className="sharing-person"><span className="avatar avatar-kemi">KO</span><div><strong>Kemi</strong><small>Safe-arrival update</small></div><i className="access-level level-low" /></div>
-              <div className="sharing-note"><BrandMark small /><span>You stay in control—even during a trip.</span></div>
+              <div className="sharing-person"><span className="avatar avatar-tomi">TA</span><div><strong>Tobi</strong><small>Approximate area</small></div><i className="access-level level-medium" /></div>
+              <div className="sharing-person"><span className="avatar avatar-kemi">KO</span><div><strong>Kemi</strong><small>Hidden at Home</small></div><i className="access-level level-low" /></div>
+              <div className="sharing-note"><BrandMark small /><span>Exact · Approximate · Hidden · Emergency-only</span></div>
             </div>
           </div>
         </section>
@@ -329,9 +301,9 @@ export default function Home() {
             <h2>For the people who already look out for each other.</h2>
           </div>
           <div className="people-grid">
-            <article><span className="people-label">Parents</span><p>See the route, the last location, and every important checkpoint—without another round of phone calls.</p><small>Victor &amp; Deborah</small></article>
-            <article><span className="people-label">Friend groups</span><p>Plan the night together, share only what feels right, and know when everyone has made it home.</p><small>Ada &amp; friends</small></article>
-            <article><span className="people-label">Late-night commuters</span><p>Share a trip in seconds and give trusted people a clear signal if something changes.</p><small>Tunde</small></article>
+            <article><span className="people-label">Parents</span><p>See the route, the last location, and every important checkpoint—without another round of phone calls.</p><small>Stay connected, without constant calls</small></article>
+            <article><span className="people-label">Friend groups</span><p>Share only what feels right and stay connected as plans change, with familiar avatars on your map.</p><small>Closeness with boundaries</small></article>
+            <article><span className="people-label">Late-night commuters</span><p>Share a trip in seconds and give trusted people a clear signal if something changes.</p><small>Reassurance along the way</small></article>
           </div>
         </section>
 
@@ -345,7 +317,7 @@ export default function Home() {
           <div>
             <p className="kicker light-kicker">Early access</p>
             <h2>Move freely.<br />Keep your people close.</h2>
-            <p>Join the first group shaping a calmer, more private way to look out for the people you love.</p>
+            <p>Halo is in development for iPhone. Explore the experience today; early-access details will be shared here when registration opens.</p>
           </div>
           <EarlyAccessForm compact />
         </section>
@@ -353,8 +325,8 @@ export default function Home() {
 
       <footer className="footer page-width">
         <a className="brand" href="#top"><BrandMark /><span>halo</span></a>
-        <p>Someone’s always looking out for you.</p>
-        <p className="footer-note">Halo supports trusted-circle safety. It is not a replacement for emergency services.</p>
+        <p>Your people. Your places. Your Halo.</p>
+        <p className="footer-note">Halo supports trusted-circle safety, not emergency-service dispatch. Location and alert delivery depend on permissions, connectivity, and iOS background behavior.</p>
         <span>© 2026 Halo</span>
       </footer>
     </div>
