@@ -10,6 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Keep your circle close with Halo for iPhone: live location sharing, personal privacy controls, check-ins, SOS, saved places, and 30-day trail replay.",
     applicationName: "Halo",
+    icons: {
+      icon: "/favicon.png",
+      apple: "/halo/app-icon.png",
+    },
     metadataBase,
     keywords: [
       "Halo",

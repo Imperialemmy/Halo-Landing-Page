@@ -70,7 +70,37 @@ const featureCards = [
 ] as const;
 
 function BrandMark({ small = false }: { small?: boolean }) {
-  return <span aria-hidden="true" className={small ? "brand-mark brand-mark-small" : "brand-mark"} />;
+  return <img aria-hidden="true" className={small ? "brand-mark brand-mark-small" : "brand-mark"} src="/halo/app-icon.png" alt="" />;
+}
+
+type PlaceKind = "home" | "work" | "cafe";
+
+function PlaceGlyph({ kind }: { kind: PlaceKind }) {
+  if (kind === "home") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7v8.5h-5.3v-5.6H8.8v5.6H3.5Z" /></svg>;
+  }
+  if (kind === "work") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6V4h8v2h4a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm2 0h4V5.5h-4Zm-6 5v7.5h16V11h-6v2h-4v-2Z" /></svg>;
+  }
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h13v8.2A4.8 4.8 0 0 1 12.2 20H8.8A4.8 4.8 0 0 1 4 15.2Zm13 2v5h1.2a2.5 2.5 0 0 0 0-5ZM7 3.5h2V6H7Zm5 0h2V6h-2Z" /></svg>;
+}
+
+function PlaceToken({ kind, anchored = false }: { kind: PlaceKind; anchored?: boolean }) {
+  return <span className={`place-token place-${kind}${anchored ? " place-anchored" : ""}`}><PlaceGlyph kind={kind} /></span>;
+}
+
+function CurrentPersona({ compact = false }: { compact?: boolean }) {
+  return <span className={compact ? "current-persona persona-compact" : "current-persona"} aria-label="Halo’s current standing stickman avatar">
+    <span className="persona-ground" />
+    <span className="persona-art">
+      <img src="/halo/persona-standing.png" alt="" />
+      <svg className="persona-face" viewBox="0 0 512 512" aria-hidden="true">
+        <circle cx="244.1" cy="269.75" r="6.04" />
+        <circle cx="268.25" cy="269.75" r="5.19" />
+        <path d="M249.88 289.31 Q257.23 296.2 264.57 289.31" />
+      </svg>
+    </span>
+  </span>;
 }
 
 function EarlyAccessForm({ compact = false }: { compact?: boolean }) {
@@ -99,19 +129,19 @@ function GuardianStage() {
                 <circle cx="54" cy="226" r="5" /><circle cx="117" cy="178" r="5" />
               </svg>
               <span className="map-place-name">Your neighborhood</span>
-              <div className="map-home"><img src="/halo/home.png" alt="" width="54" height="54" /></div>
-              <div className="map-person"><img src="/halo/at-home.png" alt="Halo’s at-home stickman avatar" width="88" height="88" /><strong>You at Home</strong><small>Location hidden</small></div>
+              <div className="map-home"><PlaceToken kind="home" anchored /></div>
+              <div className="map-person"><CurrentPersona /><strong>You at Home</strong><small>Location hidden</small></div>
               <span className="map-sos">SOS</span>
             </div>
             <div className="phone-checkin"><span><strong>23:58</strong><small>until check-in</small></span><b>+15 min</b><em>I’m safe</em></div>
-            <div className="phone-bottom"><strong>Your places</strong><div><span><img src="/halo/home.png" alt="" width="42" height="42" />Home</span><span><img src="/halo/work.png" alt="" width="42" height="42" />Work</span><span><img src="/halo/cafe.png" alt="" width="42" height="42" />Café</span></div><small>Illustrative preview · not live location data</small></div>
+            <div className="phone-bottom"><strong>Your places</strong><div><span><PlaceToken kind="home" />Home</span><span><PlaceToken kind="work" />Work</span><span><PlaceToken kind="cafe" />Café</span></div><small>Illustrative preview · not live location data</small></div>
           </div>
         </div>
       </div>
 
       <div className="orbit-card mum-card">
         <div className="person-row">
-          <span className="avatar avatar-mum">MO</span>
+          <img className="avatar avatar-mum" src="/halo/profile-azure-content.png" alt="" />
           <span><strong>Mum</strong><small>Family · exact location</small></span>
           <span className="safe-dot push-right" />
         </div>
@@ -159,7 +189,7 @@ function FeatureVisual({ type }: { type: typeof featureCards[number]["visual"] }
     return <div className="feature-sos-orb">SOS</div>;
   }
   if (type === "history") {
-    return <div className="history-visual"><img src="/halo/walking.png" alt="" width="70" height="70" /><div><strong>Your trail</strong><b>Walk. Stop. Replay.</b><small>Explore the last 30 days</small></div></div>;
+    return <div className="history-visual"><CurrentPersona compact /><div><strong>Your trail</strong><b>Walk. Stop. Replay.</b><small>Explore the last 30 days</small></div></div>;
   }
   if (type === "privacy") {
     return <div className="privacy-visual"><span><b>Family</b><i /></span><span><b>Friends</b><i /></span><span><b>Loves</b><i /></span></div>;
@@ -168,7 +198,7 @@ function FeatureVisual({ type }: { type: typeof featureCards[number]["visual"] }
     return <div className="checkin-feature"><strong>23:58<small>until check-in</small></strong><span>+15 min</span><b>I’m safe</b></div>;
   }
   if (type === "places") {
-    return <div className="places-visual real-places">{[["home", "Home"], ["work", "Work"], ["cafe", "Café"]].map(([icon, label]) => <span key={icon}><img src={`/halo/${icon}.png`} alt="" width="54" height="54" />{label}</span>)}</div>;
+    return <div className="places-visual real-places">{([["home", "Home"], ["work", "Work"], ["cafe", "Café"]] as const).map(([kind, label]) => <span key={kind}><PlaceToken kind={kind} />{label}</span>)}</div>;
   }
   return <div className="guide-visual"><span aria-hidden="true">+</span><div><strong>First aid</strong><small>Clear steps, when you need them</small></div></div>;
 }
