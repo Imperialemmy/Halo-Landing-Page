@@ -221,10 +221,13 @@ export default function Home() {
           <span>halo</span>
         </a>
         <nav className="nav-links" aria-label="Main navigation">
-          <a href="#how-it-works">How it works</a>
-          <a href="#features">Features</a>
-          <a href="#privacy">Privacy</a>
-          <a className="nav-cta" href="#early-access">Discover Halo</a>
+          <a className="nav-section-link" href="#how-it-works">How it works</a>
+          <a className="nav-section-link" href="#features">Features</a>
+          <a className="nav-section-link" href="#privacy">Privacy</a>
+          <span className="nav-account-actions">
+            <a className="nav-login" href="https://account.haloapp.xyz">Log in</a>
+            <a className="nav-signup" href="https://account.haloapp.xyz/signup">Create account</a>
+          </span>
         </nav>
       </header>
 
